@@ -4,9 +4,9 @@ window.onload = main;
 
 let matrix = [];
 
-let size = 128
-let width = size;
-let height = size;
+//let size = 256
+let width = 1900/3;
+let height = 1024/3;
 
 class Bot {
     constructor(x, y, energy, code) {
@@ -200,7 +200,10 @@ function main() {
                     deadWorld = false;
                     matrix[i][o].next();
                     let bs = matrix[i][o].blockswap?60:0;
-                    ctx.fillStyle = "rgb("+matrix[i][o].energy+20+bs+" "+matrix[i][o].health+40+" "+matrix[i][o].age+80+")";
+                    //ctx.fillStyle = "rgb("+matrix[i][o].energy+20+bs+" "+matrix[i][o].health+40+" "+matrix[i][o].age+80+")";
+                    //ctx.fillStyle = "rgb("+matrix[i][o].age*2+" "+matrix[i][o].age*2+" "+matrix[i][o].age*2+")";
+                    //ctx.fillStyle = "rgb("+matrix[i][o].energy+" "+matrix[i][o].energy+" "+matrix[i][o].energy+")";
+                    ctx.fillStyle = "rgb("+matrix[i][o].health+" "+matrix[i][o].health+" "+matrix[i][o].health+")";
                 } else {
                     matrix[i][o].blockswap=false;
                     if(matrix[i][o].energy>0)
@@ -209,7 +212,7 @@ function main() {
                         matrix[i][o].energy/=3.75;
                     ctx.fillStyle = "rgb(3 3 3)";
                 }
-                let s = 820/width
+                let s = 3;
                 ctx.fillRect(i*s, o*s, s, s);
                 
             }
@@ -221,7 +224,7 @@ function main() {
             regenerateWorld();
         }
 
-    }, 1000/60);
+    }, 1000/15);
 }
 
 
